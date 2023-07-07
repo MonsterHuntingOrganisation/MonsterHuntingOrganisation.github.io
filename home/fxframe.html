@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="dark">
+    <div class="animated-background"></div>
+</body>
+<script src="./animatedlines.js" type="text/javascript"></script>
+<style>
+    body {
+        --color-bg: #000000;
+        --color-bg-2: #000000;
+        --color-bg-3: #228822;
+        --gradient-margin: 900px;
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        background: #111111;
+        overflow: hidden !important;
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .animated-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% + var(--gradient-margin));
+        background: radial-gradient(ellipse at 500% 0%, var(--color-bg) 50%, var(--color-bg-2) 80%, var(--color-bg-3) 100%);
+        z-index: -1;
+        transform: translateY(calc(var(--gradient-margin) * -1));
+    }
+</style>
+</html>

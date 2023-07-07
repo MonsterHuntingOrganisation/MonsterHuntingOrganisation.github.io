@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blazymint's website</title>
+</head>
+
+<body>
+    <div id="main" class="a">
+        <p class="h1">blazymint</p>
+        <p>discord: @blazymint</p>
+        <a class="n" onclick="hideshow('main', 'links');">links</a>
+        <a class="n" onclick="nogpu(true);" id="gpu">disable effects</a>
+    </div>
+    <div id="links" class="a">
+        <p class="h1">Links</p>
+        <a class="n" href="https://instagram.com/mintyfreshg1" target="_blank">twitter</a>
+        <a class="n" href="https://www.tiktok.com/@blazyy_mint?_t=8dnOe5VV9xx&_r=1" target="_blank">tiktok</a>
+        <a class="n" href="https://instagram.com/mintyfreshg1" target="_blank">insta</a>
+        <a class="n" href="https://www.tumblr.com/blog/mintyfreshg1" target="_blank">tumblr</a>
+        <a class="n" href="https://github.com/mintyfreshg1" target="_blank">github</a>
+        <a class="n" href="https://github.com/sillygoofster43/sillygoofster43.github.io" target="_blank">og site creator</a>
+        <p><a class="h1 b back" style="font-size: 22px !important;" onclick="hideshow('links', 'main');">back</a></p>
+    </div>
+    <iframe id="fxframe" style="z-index: 1; left: 0px; top: 0px; width: 100%; height: 100%; border: none;"
+        src="./home/fxframe.html"></iframe>
+</body>
+<script>
+    function hideshow(elementID, elementID2) {
+        var element = document.getElementById(elementID);
+        var element2 = document.getElementById(elementID2);
+        if (element || element2) {
+            element.style.display = "none";
+            element2.style.display = "block";
+        }
+    }
+    function screen() {
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        if (screenWidth < 300 || screenHeight < 500) {
+            var mainDiv = document.getElementById("main");
+            mainDiv.classList.remove("a");
+            mainDiv.classList.add("c");
+            var mainDiv2 = document.getElementById("links");
+            mainDiv2.classList.remove("a");
+            mainDiv2.classList.add("c");
+        } else if (screenWidth > 300 && screenHeight > 500) {
+            var mainDiv = document.getElementById("main");
+            mainDiv.classList.remove("c");
+            mainDiv.classList.add("a");
+            var mainDiv2 = document.getElementById("links");
+            mainDiv2.classList.remove("c");
+            mainDiv2.classList.add("a");
+        }
+        setTimeout(screen, 300);
+    }
+    screen();
+    function nogpu(value) {
+        if (value === true) {
+            // Set localStorage to store the option
+            localStorage.setItem("disableEffects", "true");
+
+            var scriptElement = document.getElementById("fxframe");
+            if (scriptElement) {
+                scriptElement.parentNode.removeChild(scriptElement);
+            }
+
+            var linkElement = document.getElementById("gpu");
+            linkElement.innerHTML = "enable effects";
+            linkElement.onclick = function () {
+                nogpu(false);
+            };
+        } else if (value === false) {
+            // Remove the stored option from localStorage
+            localStorage.removeItem("disableEffects");
+            window.location.reload();
+        }
+    }
+
+    // Read the option from localStorage on page load
+    window.addEventListener("load", function () {
+        var disableEffects = localStorage.getItem("disableEffects");
+        if (disableEffects === "true") {
+            nogpu(true);
+        }
+        init();
+    });
+</script>
+<style>
+    div {
+        z-index: 3;
+    }
+
+    .c {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        top: 10px;
+        bottom: 10px;
+        text-align: center;
+        overflow-y: scroll;
+    }
+
+    .h1 {
+        font-size: 28px;
+        color: #006600;
+    }
+
+    .a {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .b {
+        color: #99ff99;
+    }
+
+    #tech,
+    #stuff,
+    #links,
+    #kitties {
+        display: none;
+    }
+
+    #tech {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        top: 10px;
+        bottom: 10px;
+        text-align: center;
+        overflow-y: scroll;
+    }
+
+    @font-face {
+        font-family: 'Poppins';
+        src: url('./home/font.ttf');
+    }
+
+    a {
+        color: #99ff99;
+        text-decoration: none;
+        font-size: 18px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: #228822;
+    }
+
+    a:active {
+        color: #006600;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        background: #000000;
+        overflow: hidden !important;
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    p {
+        font-size: 18px;
+        margin: 4px;
+        padding: 4px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: #228822;
+        transition: 0.50s;
+        border-radius: 4px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #3a3a3a;
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #2a2a2a;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: #4a4a4a;
+    }
+</style>
+
+</html>
